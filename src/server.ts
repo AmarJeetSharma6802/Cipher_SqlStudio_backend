@@ -12,22 +12,18 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 5000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/assignments', assignmentRoutes);
 app.use('/api/query', queryRoutes);
 app.use('/api/hint', llmRoutes);
 
-// Basic Route
 app.get('/', (req: Request, res: Response) => {
   res.send('CipherSQLStudio API is running');
 });
 
-// Start Server & Connect DBs
 const startServer = async () => {
   await connectMongoDB();
   await connectPostgres();
