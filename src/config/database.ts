@@ -28,7 +28,7 @@ export const pgPool = new Pool({
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
-});
+}); 
 
 export const connectPostgres = async () => {
   try {
