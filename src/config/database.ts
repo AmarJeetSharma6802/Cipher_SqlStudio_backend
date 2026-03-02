@@ -20,10 +20,11 @@ export const connectMongoDB = async () => {
 export const pgPool = new Pool({
   user: process.env.PG_USER || 'postgres',
   host: process.env.PG_HOST || 'localhost',
-  database: process.env.PG_DATABASE || 'ciphersql_sandbox',
+  database: process.env.PG_DATABASE || 'neondb', 
   password: process.env.PG_PASSWORD || 'postgres',
   port: parseInt(process.env.PG_PORT || '5432', 10),
-  // Limit max connections to prevent sandbox overload
+  ssl: process.env.PG_SSLMODE === 'require' ? { rejectUnauthorized: false } : false,
+  
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
