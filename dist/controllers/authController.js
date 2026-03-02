@@ -11,7 +11,6 @@ const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret';
 const register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
-        // Check if user exists
         const existingUser = await User_1.User.findOne({ $or: [{ email }, { username }] });
         if (existingUser) {
             res.status(400).json({ error: 'User already exists' });
