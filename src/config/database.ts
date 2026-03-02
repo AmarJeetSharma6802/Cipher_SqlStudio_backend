@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// MongoDB Connection (Persistence)
 export const connectMongoDB = async () => {
   try {
     const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ciphersqlstudio';
@@ -16,7 +15,6 @@ export const connectMongoDB = async () => {
   }
 };
 
-// PostgreSQL Connection Pool (Sandbox)
 export const pgPool = new Pool({
   user: process.env.PG_USER || 'postgres',
   host: process.env.PG_HOST || 'localhost',
